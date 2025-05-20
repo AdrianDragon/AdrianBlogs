@@ -1,0 +1,1060 @@
+:root {
+    --color-background: #0a0a1f; /* Negro azulado oscuro */
+    --color-surface: #1a1a3d;   /* Azul oscuro morado para superficies */
+    --color-primary: #00ffff;   /* Azul eléctrico (Neon Aqua/Cyan) */
+    --color-secondary: #9f00ff; /* Morado (Neon Purple) */
+    --color-accent: #ff00ff;    /* Magenta (Neon Pink/Fuchsia) */
+    --color-text: #e0e0e0;
+    --color-text-muted: #a0a0a0;
+    --font-primary: 'Poppins', sans-serif;
+    --font-secondary: 'Montserrat', sans-serif;
+    --border-radius-large: 25px;
+    --border-radius-medium: 15px;
+    --shadow-soft: 0 8px 25px rgba(0, 255, 255, 0.1), 0 4px 10px rgba(159, 0, 255, 0.08);
+    --shadow-glow: 0 0 15px var(--color-primary), 0 0 30px var(--color-primary);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    /* For scroll snapping (add later if implemented with JS) */
+    /* scroll-snap-type: y mandatory; */
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--color-background);
+    color: var(--color-text);
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-secondary);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+    text-shadow: 0 0 5px var(--color-primary);
+}
+
+h1 { font-size: 3rem; }
+h2 { font-size: 2.5rem; margin-bottom: 2rem; text-align: center;}
+h3 { font-size: 1.75rem; color: var(--color-secondary); }
+
+p {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+a {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+a:hover, a:focus {
+    color: var(--color-primary);
+    text-shadow: 0 0 8px var(--color-primary);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius-medium);
+}
+
+section {
+    padding: 80px 0;
+    /* For scroll snapping */
+    /* scroll-snap-align: start; */
+    /* scroll-margin-top: 70px; /* Adjust based on header height */
+    border-bottom: 1px solid rgba(0, 255, 255, 0.1); /* Subtle separator */
+}
+
+section:last-of-type {
+    border-bottom: none;
+}
+
+
+/* Header & Navigation */
+header {
+    background-color: rgba(10, 10, 31, 0.85); /* Slightly transparent background */
+    backdrop-filter: blur(10px);
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 15px rgba(0, 255, 255, 0.1);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-shadow: 0 0 10px var(--color-primary);
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+}
+
+.nav-menu li {
+    margin-left: 25px;
+}
+
+.nav-menu a {
+    color: var(--color-text);
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: var(--border-radius-medium);
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nav-menu a:hover,
+.nav-menu a.active {
+    background-color: var(--color-primary);
+    color: var(--color-background);
+    box-shadow: var(--shadow-glow);
+}
+
+.menu-toggle {
+    display: none; /* Hidden on desktop */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--color-primary);
+    margin: 5px 0;
+    border-radius: 3px;
+    transition: all 0.3s ease-in-out;
+}
+
+
+/* Hero Section */
+.hero {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 100px; /* Account for fixed header */
+    background: linear-gradient(rgba(10, 10, 31, 0.7), rgba(10, 10, 31, 0.9)), url('https://source.unsplash.com/1600x900/?futuristic,abstract') no-repeat center center/cover;
+    position: relative; /* For potential parallax */
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    /* animation: fadeInDown 1s ease-out; */ /* Removed to prevent conflict with ScrollReveal */
+}
+
+.hero p {
+    font-size: 1.3rem;
+    color: var(--color-text-muted);
+    /* animation: fadeInUp 1s ease-out 0.5s; */ /* Removed to prevent conflict with ScrollReveal */
+    /* animation-fill-mode: backwards; */
+}
+
+/* Sobre Mí Section */
+#sobre-mi .sobre-mi-content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    background-color: var(--color-surface);
+    padding: 40px;
+    border-radius: var(--border-radius-large);
+    box-shadow: var(--shadow-soft);
+}
+
+#sobre-mi .profile-pic {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 50%; /* Circular profile pic */
+    border: 5px solid var(--color-primary);
+    box-shadow: 0 0 20px var(--color-primary);
+}
+
+#sobre-mi .sobre-mi-texto {
+    flex: 1;
+}
+
+/* Categorías Section */
+#categorias .category-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.category-btn {
+    background-color: var(--color-surface);
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    padding: 12px 25px;
+    font-family: var(--font-secondary);
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: var(--border-radius-large);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 255, 255, 0.1);
+}
+
+.category-btn:hover, .category-btn.active {
+    background-color: var(--color-primary);
+    color: var(--color-background);
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-3px);
+}
+
+/* Galería Section */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.gallery-item {
+    background-color: var(--color-surface);
+    border-radius: var(--border-radius-medium);
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+    position: relative; /* For caption */
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px) rotateZ(1deg); /* Slight 3D tilt effect */
+    box-shadow: 0 12px 35px rgba(var(--color-primary-rgb), 0.2), 0 6px 15px rgba(var(--color-secondary-rgb), 0.15);
+}
+
+.gallery-item .caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(10, 10, 31, 0.8);
+    backdrop-filter: blur(5px);
+    color: var(--color-text);
+    padding: 10px;
+    font-size: 0.9rem;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.gallery-item:hover .caption {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.gallery-item .caption a {
+    color: var(--color-primary);
+    font-weight: bold;
+}
+
+/* Style for when only one gallery item is present */
+.gallery-grid .gallery-item:only-child {
+    max-width: 400px; /* Adjust as needed for a pleasing size */
+    justify-self: center; /* Center the item in the grid track */
+    /* If it's still too wide, you might need to be more specific:
+    grid-column-start: auto; /* Reset any spanning that might occur by default */
+    /* width: min-content; /* Or a fixed width like 350px */
+}
+
+
+/* Blog Section */
+.blog-posts {
+    display: grid;
+    gap: 40px;
+}
+
+.blog-post {
+    background-color: var(--color-surface);
+    border-radius: var(--border-radius-large);
+    box-shadow: var(--shadow-soft);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-post:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(159, 0, 255, 0.2);
+}
+
+.blog-post img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.blog-post .post-content {
+    padding: 25px;
+}
+
+.blog-post .post-meta {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    margin-bottom: 0.5rem;
+}
+
+.blog-post .post-excerpt {
+    margin-bottom: 1rem;
+}
+
+.read-more {
+    display: inline-block;
+    background-color: var(--color-secondary);
+    color: var(--color-text);
+    padding: 10px 20px;
+    border-radius: var(--border-radius-medium);
+    font-weight: 600;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.read-more:hover {
+    background-color: var(--color-accent);
+    color: var(--color-background); /* Or white, for contrast */
+    box-shadow: 0 0 15px var(--color-accent);
+}
+
+/* Contacto Section */
+#contact-form {
+    background-color: var(--color-surface);
+    padding: 40px;
+    border-radius: var(--border-radius-large);
+    box-shadow: var(--shadow-soft);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    background-color: rgba(10, 10, 31, 0.7);
+    border: 2px solid var(--color-secondary);
+    border-radius: var(--border-radius-medium);
+    color: var(--color-text);
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 10px var(--color-primary);
+}
+
+.form-group input.invalid,
+.form-group textarea.invalid {
+    border-color: #ff3860; /* Neon Red for errors */
+    box-shadow: 0 0 10px #ff3860;
+}
+
+.error-message {
+    display: block;
+    color: #ff3860; /* Neon Red for error messages */
+    font-size: 0.9rem;
+    margin-top: 5px;
+    min-height: 1em; /* Reserve space to prevent layout shifts */
+}
+
+.submit-btn {
+    background-color: var(--color-primary);
+    color: var(--color-background);
+    border: none;
+    padding: 15px 30px;
+    font-family: var(--font-secondary);
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: var(--border-radius-large);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 255, 255, 0.2);
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.submit-btn:hover {
+    background-color: var(--color-accent);
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-3px);
+}
+
+/* Footer */
+footer {
+    background-color: #050510; /* Even darker for footer */
+    color: var(--color-text-muted);
+    padding: 40px 0;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.social-links {
+    margin-bottom: 20px;
+}
+
+.social-links a {
+    margin: 0 8px;
+    font-size: 1.6rem; /* Slightly smaller icons for mobile */
+}
+
+.social-links a:hover {
+    color: var(--color-primary); /* Default hover color - can be specific per icon */
+    text-shadow: var(--shadow-glow);
+}
+
+/* Specific hover colors for brand recognition + neon glow */
+.social-links a[aria-label="Facebook"]:hover {
+    color: #1877F2; /* Facebook Blue */
+    text-shadow: 0 0 10px #1877F2, 0 0 20px #1877F2;
+}
+
+.social-links a[aria-label="Instagram"]:hover {
+    color: #E4405F; /* Instagram Pink */
+    text-shadow: 0 0 10px #E4405F, 0 0 20px #E4405F;
+}
+
+.social-links a[aria-label="Twitter"]:hover {
+    color: #1DA1F2; /* Twitter Blue */
+    text-shadow: 0 0 10px #1DA1F2, 0 0 20px #1DA1F2;
+}
+
+.social-links a[aria-label="LinkedIn"]:hover {
+    color: #0A66C2; /* LinkedIn Blue */
+    text-shadow: 0 0 10px #0A66C2, 0 0 20px #0A66C2;
+}
+
+/* Removing old SVG and img specific styles that are no longer needed for social icons */
+/*.social-links img, .social-links .social-svg {*/
+/*    width: 30px;*/
+/*    height: 30px;*/
+/*    border-radius: 5px; */
+/*    transition: filter 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;*/
+/*    vertical-align: middle; */
+/*}*/
+
+/*.social-links .social-svg rect {*/
+/*    transition: fill 0.3s ease;*/
+/*}*/
+
+/*.social-links .social-svg text {*/
+/*    transition: fill 0.3s ease;*/
+/*}*/
+
+/*.social-links img {*/
+/*    filter: grayscale(50%) brightness(0.8);*/
+/*}*/
+
+/*.social-links a:hover img {*/
+/*    filter: grayscale(0%) brightness(1);*/
+/*    box-shadow: 0 0 10px var(--color-primary);*/
+/*}*/
+
+/*.social-links a:hover .social-svg {*/
+/*    box-shadow: 0 0 10px var(--color-primary); */
+/*    opacity: 0.9;*/
+/*}*/
+
+/*.social-links a:hover .social-svg[data-social="fb"] rect {*/
+/*    fill: #1877F2; */
+/*}*/
+/*.social-links a:hover .social-svg[data-social="ig"] rect {*/
+/*    fill: #E4405F; */
+/*}*/
+/*.social-links a:hover .social-svg[data-social="x"] rect {*/
+/*    fill: #000000; */
+/*}*/
+/*.social-links a:hover .social-svg[data-social="x"] text {*/
+/*    fill: #FFFFFF; */
+/*}*/
+/*.social-links a:hover .social-svg[data-social="in"] rect {*/
+/*    fill: #0A66C2; */
+/*}*/
+
+footer p {
+    margin-bottom: 0.5rem;
+}
+
+footer a {
+    color: var(--color-secondary);
+}
+footer a:hover {
+    color: var(--color-primary);
+}
+
+/* ScrollReveal base (hidden initially) */
+.sr-hidden {
+    visibility: hidden;
+}
+
+/* Animation Keyframes (Example) */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    .hero h1 {font-size: 2.8rem;}
+
+    #sobre-mi .sobre-mi-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    #sobre-mi .profile-pic {
+        width: 200px;
+        height: 200px;
+        margin-bottom: 20px;
+    }
+
+    .blog-post {
+        flex-direction: column; /* Stack image and content on smaller screens */
+    }
+    .blog-post img {
+        height: 200px; /* Adjust height */
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%; /* Position below header */
+        left: 0;
+        width: 100%;
+        background-color: var(--color-surface);
+        padding: 20px 0;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        border-top: 1px solid var(--color-primary);
+    }
+
+    .nav-menu.active {
+        display: flex; /* Show when active */
+    }
+
+    .nav-menu li {
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .nav-menu a {
+        display: block;
+        padding: 12px;
+    }
+    .nav-menu a:hover, .nav-menu a.active {
+        background-color: var(--color-primary);
+        color: var(--color-background);
+        box-shadow: none; /* Remove glow for mobile dropdown for simplicity */
+    }
+
+
+    .menu-toggle {
+        display: block; /* Show hamburger icon */
+    }
+    .menu-toggle.active span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .menu-toggle.active span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjust for smaller screens */
+    }
+    .gallery-item img {
+        height: 220px;
+    }
+
+    .hero {
+        min-height: 60vh;
+        padding-top: 80px;
+    }
+    .hero h1 { font-size: 2.2rem; }
+    .hero p { font-size: 1.1rem; }
+
+    section {
+        padding: 60px 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        width: 95%;
+    }
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.8rem; }
+
+    .gallery-grid {
+        grid-template-columns: 1fr; /* Single column on very small screens */
+    }
+    .gallery-grid .gallery-item:only-child {
+        max-width: 90%; /* Allow a bit wider on single column mobile */
+    }
+    .gallery-item img {
+        height: 250px;
+    }
+
+    #contact-form {
+        padding: 25px;
+    }
+    .submit-btn {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+
+    .blog-post .post-content {
+        padding: 20px;
+    }
+
+    footer {
+        padding: 30px 0;
+    }
+    .social-links a {
+        margin: 0 8px;
+        font-size: 1.6rem; /* Slightly smaller icons for mobile */
+    }
+}
+
+/* Image Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 2000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scroll if content is too long */
+    background-color: rgba(10, 10, 31, 0.9); /* Dark semi-transparent background */
+    backdrop-filter: blur(8px);
+    padding-top: 60px; /* Space from top */
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.modal.modal-open {
+    display: flex; /* Use flex to center content */
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+}
+
+.modal-content {
+    background-color: var(--color-surface);
+    margin: auto;
+    padding: 30px;
+    border: 1px solid var(--color-primary);
+    border-radius: var(--border-radius-large);
+    width: 85%;
+    max-width: 700px; /* Max width of modal content */
+    box-shadow: 0 10px 40px rgba(0, 255, 255, 0.2), 0 0 20px var(--color-primary) inset;
+    text-align: center;
+    transform: scale(0.95);
+    transition: transform 0.4s ease-in-out;
+}
+
+.modal.modal-open .modal-content {
+    transform: scale(1);
+}
+
+/* New wrapper for the image and its specific close button */
+.modal-image-wrapper {
+    position: relative;
+    display: inline-block; /* Shrink to content & allows centering via text-align on parent */
+    margin-bottom: 20px;
+    max-width: 100%; /* Ensure wrapper doesn't exceed modal content width */
+}
+
+.close-modal-btn {
+    color: var(--color-accent);
+    position: absolute;
+    /* Adjusted positioning to be relative to the modal-image-wrapper */
+    top: -15px; /* Position slightly above the wrapper */
+    right: -15px; /* Position slightly to the right of the wrapper */
+    /* Alternative: position inside: top: 5px; right: 5px; */
+    font-size: 2rem; /* Slightly smaller for less intrusion */
+    font-weight: bold;
+    line-height: 1;
+    transition: color 0.3s ease, transform 0.3s ease;
+    z-index: 2010; /* Ensure it's above the image */
+    background-color: var(--color-surface); /* Optional: small background to make it stand out */
+    border-radius: 50%;
+    width: 30px; /* Fixed size for the button background */
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.close-modal-btn:hover,
+.close-modal-btn:focus {
+    color: var(--color-primary);
+    text-decoration: none;
+    cursor: pointer;
+    transform: scale(1.1) translate(1px, -1px); /* Slight move on hover */
+}
+
+.modal-image {
+    display: block; /* Behaves better for sizing */
+    width: auto; /* Allow natural width based on aspect ratio */
+    height: auto; /* Allow natural height based on aspect ratio */
+    max-width: 100%; /* Constrained by its wrapper */
+    max-height: 60vh; /* Overall constraint for image height */
+    object-fit: contain;
+    border-radius: var(--border-radius-medium);
+    /* margin-bottom: 20px; --> Moved to wrapper */
+    border: 3px solid var(--color-secondary); /* Slightly thicker border */
+}
+
+.modal-description {
+    font-size: 1rem;
+    color: var(--color-text);
+    line-height: 1.6;
+    max-height: 20vh; /* Limit description height */
+    overflow-y: auto; /* Allow scrolling for long descriptions */
+    padding-right: 10px; /* For scrollbar */
+}
+
+.modal-description p {
+    margin-bottom: 0;
+}
+
+/* Responsive modal adjustments */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 90%;
+        padding: 20px;
+    }
+    .modal-image {
+        max-height: 50vh;
+    }
+    .close-modal-btn {
+        font-size: 2rem;
+        top: 10px;
+        right: 15px;
+    }
+}
+
+/* Blog Post Modal Specific Styles */
+.blog-modal-content {
+    max-width: 800px; /* A bit wider for blog content */
+    text-align: left; /* Blog content is usually left-aligned */
+}
+
+.blog-modal-image {
+    width: 100%;
+    max-height: 40vh; /* Adjust height as needed for blog post images */
+    object-fit: cover; /* Cover might be better for blog post featured images */
+    margin-bottom: 25px;
+}
+
+.blog-modal-title {
+    font-size: 2rem;
+    color: var(--color-primary);
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.blog-modal-text {
+    max-height: 45vh; /* More height for text */
+    font-size: 1.05rem;
+}
+
+.blog-modal-text p {
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+    .blog-modal-title {
+        font-size: 1.5rem;
+    }
+    .blog-modal-text {
+        font-size: 0.95rem;
+    }
+}
+
+/* Admin Password Modal Styles */
+.admin-modal-content {
+    max-width: 450px;
+    text-align: left;
+}
+
+.admin-modal-content h3 {
+    text-align: center;
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+}
+
+.admin-modal-content .form-group {
+    margin-bottom: 1.5rem;
+}
+
+/* Wrapper for password input and toggle button */
+.password-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.admin-password-field {
+    width: 100%;
+    padding: 12px;
+    padding-right: 45px; /* Space for the toggle button */
+    background-color: rgba(10, 10, 31, 0.7);
+    border: 2px solid var(--color-secondary);
+    border-radius: var(--border-radius-medium);
+    color: var(--color-text);
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.admin-password-field:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 10px var(--color-primary);
+}
+
+/* Password visibility toggle button */
+.password-toggle-btn {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    height: 100%;
+    width: 45px;
+    background: transparent;
+    border: none;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: color 0.3s ease;
+}
+
+.password-toggle-btn:hover {
+    color: var(--color-primary);
+}
+
+.password-toggle-btn i {
+    font-size: 1rem;
+}
+
+.admin-password-field.invalid { /* If you want to add error styling to input itself */
+    border-color: #ff3860; 
+    box-shadow: 0 0 10px #ff3860;
+}
+
+/* Style for the new X close button in admin modal */
+.close-admin-modal-btn {
+    /* Uses .close-modal-btn styles by default, can add specifics if needed */
+    /* For example, if positioning needs to be slightly different than other modals: */
+    /* top: 10px; */
+    /* right: 15px; */
+}
+
+/* Removed styling for the old .submit-btn-alt as it's no longer used for cancel */
+/*.admin-modal-content .submit-btn-alt {*/
+/*    background-color: var(--color-surface);*/
+/*    color: var(--color-text-muted);*/
+/*    border: 1px solid var(--color-text-muted);*/
+/*    margin-top: 10px;*/
+/*}*/
+
+/*.admin-modal-content .submit-btn-alt:hover {*/
+/*    background-color: var(--color-text-muted);*/
+/*    color: var(--color-surface);*/
+/*    border-color: var(--color-text-muted);*/
+/*    box-shadow: 0 0 10px var(--color-text-muted);*/
+/*}*/
+
+/* Admin Mode Specific UI */
+.admin-edit-btn {
+    display: none; /* Hidden by default */
+    background-color: var(--color-accent);
+    color: var(--color-background);
+    border: none;
+    padding: 6px 12px;
+    border-radius: var(--border-radius-medium);
+    cursor: pointer;
+    font-family: var(--font-secondary);
+    font-size: 0.8rem;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+    opacity: 0.8;
+}
+
+.admin-edit-btn:hover {
+    opacity: 1;
+    box-shadow: 0 0 10px var(--color-accent);
+}
+
+body.admin-mode-active .admin-edit-btn {
+    display: inline-block; /* Show in admin mode */
+}
+
+.admin-editable-container {
+    position: relative; /* For positioning edit buttons if needed directly on container */
+}
+
+.profile-image-container .admin-edit-btn {
+    display: none; /* Hidden by default, shown by admin-mode-active on body */
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10; /* Ensure it's above the image slightly */
+}
+
+.sobre-mi-texto .admin-edit-btn {
+    display: none; /* Hidden by default, shown by admin-mode-active on body */
+    /* position: absolute; /* If you want to position it absolutely */
+    /* bottom: -15px; */
+    /* right: 0; */
+}
+
+/* Styling for textareas when editing */
+textarea.editable-admin-text {
+    width: 100%;
+    padding: 10px;
+    background-color: rgba(var(--color-surface-rgb), 0.9); /* Using CSS var if available, else direct */
+    border: 1px dashed var(--color-primary);
+    border-radius: var(--border-radius-medium);
+    color: var(--color-text);
+    font-family: var(--font-primary);
+    font-size: inherit; /* Inherit from original p tag */
+    margin-bottom: 10px;
+    min-height: 80px;
+    resize: vertical;
+}
+
+.admin-edit-actions button {
+    margin-right: 10px;
+    font-size: 0.8rem;
+    padding: 5px 10px;
+    /* Add general admin button styling here */
+    background-color: var(--color-secondary);
+    color: var(--color-text);
+    border: 1px solid var(--color-primary);
+    border-radius: var(--border-radius-medium);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.admin-edit-actions button:hover {
+    background-color: var(--color-primary);
+    color: var(--color-background);
+    box-shadow: var(--shadow-glow);
+}
+
+.admin-edit-actions .admin-save-btn {
+    background-color: var(--color-primary); /* Distinct save color */
+    color: var(--color-background);
+}
+
+.admin-edit-actions .admin-save-btn:hover {
+    background-color: #00e0e0; /* Lighter primary */
+}
+
+.admin-edit-actions .admin-cancel-btn {
+    background-color: var(--color-surface); /* More subdued cancel */
+    color: var(--color-text-muted);
+    border-color: var(--color-text-muted);
+}
+
+.admin-edit-actions .admin-cancel-btn:hover {
+    background-color: var(--color-text-muted);
+    color: var(--color-surface);
+}
+
+body.admin-mode-active .admin-edit-actions.editing {
+    display: block; /* Show action buttons when .editing class is added */
+} 

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Blog Personal</title>
+    <link rel="icon" href="https://img.icons8.com/fluency/48/000000/moon.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="#" class="logo">AdrianBlogs</a>
+            <nav>
+                <button class="menu-toggle" aria-label="Abrir menú">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#categorias">Categorías</a></li>
+                    <li><a href="#sobre-mi">Sobre mí</a></li>
+                    <li><a href="#galeria">Galería</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="inicio" class="hero">
+            <div class="container">
+                <h1>Bienvenido a Mi Espacio Creativo</h1>
+                <p>Explora mis pensamientos, fotografías y proyectos.</p>
+            </div>
+        </section>
+
+        <section id="sobre-mi">
+            <div class="container">
+                <h2>Sobre mí</h2>
+                <div class="sobre-mi-content">
+                    <div class="profile-image-container admin-editable-container">
+                        <img src="https://media.licdn.com/dms/image/v2/D4D03AQGyrhfJMIvXJw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1731658337173?e=1753315200&v=beta&t=yZKq3KEdR8-qIF8nr8fMz9GgkrQc-ARqAiCIjko7gF0" alt="Foto de perfil de Adrian Barreto" class="profile-pic" id="profilePicImg">
+                        <button class="admin-edit-btn admin-edit-image-btn" data-target="profilePicImg" data-property="src">✏️ Cambiar Foto</button>
+                    </div>
+                    <div class="sobre-mi-texto admin-editable-container" id="sobreMiTextoContainer">
+                        <p id="sobreMiParrafo1">Hola, soy Adrian Barreto. Soy un apasionado por la exploración visual y las narrativas digitales, buscando la belleza en la tecnología y el cosmos y me encanta compartir mis experiencias y conocimientos a través de este blog.</p>
+                        <p id="sobreMiParrafo2">Aquí encontrarás artículos sobre fotografía nocturna, astrofotografía, arte generativo con IA, diseño futurista y reflexiones sobre la intersección de la tecnología y la creatividad. ¡Espero que disfrutes el contenido!</p>
+                        <div class="admin-edit-actions" style="display: none;">
+                            <button class="admin-save-btn">Guardar Cambios</button>
+                            <button class="admin-cancel-btn">Cancelar</button>
+                        </div>
+                        <button class="admin-edit-btn admin-edit-text-btn" data-target="sobreMiTextoContainer" data-fields="sobreMiParrafo1,sobreMiParrafo2">✏️ Editar Texto</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="categorias">
+            <div class="container">
+                <h2>Categorías</h2>
+                <div class="category-buttons">
+                    <button class="category-btn" data-category="all">Todas</button>
+                    <button class="category-btn" data-category="paisajes">Paisajes</button>
+                    <button class="category-btn" data-category="atardeceres">Atardeceres</button>
+                    <button class="category-btn" data-category="luna">Luna</button>
+                    <button class="category-btn" data-category="viajes">Viajes</button>
+                    <button class="category-btn" data-category="urbano">Urbano</button>
+                    <button class="category-btn" data-category="montanas">Montañas</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="galeria">
+            <div class="container">
+                <h2>Galería</h2>
+                <div class="gallery-grid">
+                    <!-- Las imágenes se cargarán aquí con JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <section id="blog">
+            <div class="container">
+                <h2>Blog</h2>
+                <div class="blog-posts">
+                    <article class="blog-post">
+                        <img src="https://imagenes.elpais.com/resizer/v2/2T72MO3AZVEPRFK6QPYWAOCM5E.jpg?auth=7778854bf5ed41d4f31e12295cd226419dea19cf2c02d11c9356d905172c9b2c&width=1200" alt="Misterios de la Luna Llena">
+                        <div class="post-content">
+                            <h3>Explorando los Misterios de la Luna Llena</h3>
+                            <p class="post-meta">Publicado el <time datetime="2024-07-28">28 de Julio, 2024</time></p>
+                            <p class="post-excerpt">Sumérgete en los secretos y la belleza de las noches de luna llena. Descubre su influencia y las mejores formas de fotografiarla...</p>
+                            <a href="#" class="read-more">Leer más</a>
+                        </div>
+                    </article>
+                    <article class="blog-post">
+                        <img src="https://images.mnstatic.com/4d/e6/4de6af49808ee8cdedef86e96ab3eac3.jpg" alt="Atardeceres Mágicos y Cómo Capturarlos">
+                        <div class="post-content">
+                            <h3>Atardeceres Mágicos: Guía para Capturar su Esencia</h3>
+                            <p class="post-meta">Publicado el <time datetime="2024-07-25">25 de Julio, 2024</time></p>
+                            <p class="post-excerpt">Una guía completa para encontrar y fotografiar los atardeceres más espectaculares. Consejos, técnicas y inspiración para tus próximas capturas...</p>
+                            <a href="#" class="read-more">Leer más</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto">
+            <div class="container">
+                <h2>Contacto</h2>
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" name="nombre" required>
+                        <span class="error-message"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="mensaje">Mensaje:</label>
+                        <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+                        <span class="error-message"></span>
+                    </div>
+                    <button type="submit" class="submit-btn">Enviar Mensaje</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.facebook.com/adrian.barreto.900380/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="social-icon-link"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/adrian_dragon2/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-icon-link"><i class="fab fa-instagram"></i></a>
+                <a href="https://x.com/AdrianDragon16" target="_blank" rel="noopener noreferrer" aria-label="Twitter" class="social-icon-link"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/in/adrian-barreto-1968202a6/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="social-icon-link"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <p>&copy; 2025 ELPAJARODV . Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="script.js"></script>
+
+    <!-- Modal Structure -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-image-wrapper">
+                <img src="" alt="" id="modalImage" class="modal-image">
+                <span class="close-modal-btn">&times;</span>
+            </div>
+            <div id="modalDescription" class="modal-description">
+                <p></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Blog Post Modal Structure -->
+    <div id="blogPostModal" class="modal blog-modal">
+        <div class="modal-content blog-modal-content">
+            <span class="close-modal-btn close-blog-modal-btn">&times;</span>
+            <img src="" alt="" id="blogModalImage" class="modal-image blog-modal-image">
+            <h3 id="blogModalTitle" class="blog-modal-title"></h3>
+            <div id="blogModalText" class="modal-description blog-modal-text">
+                <!-- Full blog content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Password Modal -->
+    <div id="adminPasswordModal" class="modal admin-modal">
+        <div class="modal-content admin-modal-content">
+            <span class="close-modal-btn close-admin-modal-btn">&times;</span>
+            <h3>Acceso de Administrador</h3>
+            <p>Por favor, introduce la contraseña para acceder al modo de edición.</p>
+            <div class="form-group">
+                <label for="adminPasswordInput">Contraseña:</label>
+                <div class="password-input-wrapper">
+                    <input type="password" id="adminPasswordInput" name="adminPasswordInput" class="admin-password-field">
+                    <button type="button" id="toggleAdminPassword" class="password-toggle-btn" aria-label="Mostrar u ocultar contraseña">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+                <span class="error-message" id="adminPasswordError"></span>
+            </div>
+            <button id="adminLoginBtn" class="submit-btn">Acceder</button>
+        </div>
+    </div>
+</body>
+</html> 
